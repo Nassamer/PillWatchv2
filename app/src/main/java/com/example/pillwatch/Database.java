@@ -10,6 +10,15 @@ public class Database extends BaseObservable {
     Long currentValue;
     Long baseValue;
 
+    private String dayOfWeek;
+    private String period;
+
+    public String getDayOfWeek() { return dayOfWeek; }
+    public void setDayOfWeek(String dayOfWeek) { this.dayOfWeek = dayOfWeek; }
+
+    public String getPeriod() { return period; }
+    public void setPeriod(String period) { this.period = period; }
+
     public Database(String alarmState, String binState, String alarmTime, Long currentValue, Long baseValue) {
         this.alarmState = alarmState;
         this.binState = binState;

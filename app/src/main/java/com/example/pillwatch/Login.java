@@ -1,6 +1,7 @@
 package com.example.pillwatch;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -23,10 +24,12 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 
+    //Widgets
     Button loginBtn, registrationBtn;
     private EditText loginEmail, loginPassword;
 
-    private FirebaseAuth firebaseAuth;
+    //Firebase authentication
+    protected FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseUser firebaseUser;
 
@@ -62,9 +65,14 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 1);
+        }
+
+
     }
 
-    private void logEmailPass(String email, String password){
+    protected void logEmailPass(String email, String password){
         if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
             firebaseAuth.signInWithEmailAndPassword(email, password)
                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {

@@ -1,5 +1,6 @@
 package com.example.pillwatch;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -25,16 +26,16 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Registration extends AppCompatActivity {
 
     EditText createEmail, createPassword;
-    Button registrationButton;
+    Button registrationButton, regTologButton;
 
-    //Autentikáció
+    //Authentication
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseUser firebaseUser;
 
-    //Firebase kapcsolat
+    //Firebase connection
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference collectionReference = db.collection("");
+    //private CollectionReference collectionReference = db.collection("");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,8 @@ public class Registration extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         registrationButton = findViewById(R.id.registrationButton);
+        regTologButton = findViewById(R.id.goBackToLoginFromRegistrationBtn);
+
         createEmail = findViewById(R.id.registrationEmail);
         createPassword = findViewById(R.id.registrationPassword);
 
@@ -56,7 +59,7 @@ public class Registration extends AppCompatActivity {
                 if(firebaseUser != null){
 
                 }else{
-                    //The west HAS fallen.....
+                    //User logged off
                 }
             }
         };
@@ -72,6 +75,14 @@ public class Registration extends AppCompatActivity {
                 }
             }
         });
+
+        regTologButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Registration.this, Login.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void CreateUserWithEmail(String email, String password){
@@ -82,6 +93,8 @@ public class Registration extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(Registration.this, "Sikeres regisztráció", Toast.LENGTH_LONG);
+                        Intent i = new Intent(Registration.this, Direction.class);
+                        startActivity(i);
                     }
                 }
             });

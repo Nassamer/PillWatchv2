@@ -24,17 +24,38 @@
             android:layout_marginLeft="16dp">
 
             <TextView
+                android:id="@+id/dayOfWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{database.dayOfWeek}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/period"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{database.period}"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/dayOfWeek"
+                app:layout_constraintStart_toStartOf="@id/dayOfWeek"
+                android:layout_marginTop="4dp" />
+
+            <TextView
                 android:id="@+id/baseValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="@{Long.toString(database.baseValue)}"
+                android:text='@{database.binState.equals("Full") ? "Teli" : "Üres"}'
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/period" />
 
             <TextView
                 android:id="@+id/currentValue"
@@ -85,6 +106,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/baseValue" />
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

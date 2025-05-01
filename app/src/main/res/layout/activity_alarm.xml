@@ -12,7 +12,7 @@
         android:id="@+id/goToStatisticsButton"
         android:layout_width="309dp"
         android:layout_height="49dp"
-        android:text="Statisztikák megtekintése"
+        android:text="@string/statisztikak_megtekintese"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.588"
@@ -20,95 +20,74 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.162" />
 
+    <Switch
+        android:id="@+id/alarmSwitch"
+        android:layout_width="124dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/tarolo_riasztas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.853"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/binSelector"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+        android:id="@+id/phoneAlarmSwitch"
+        android:layout_width="182dp"
+        android:layout_height="56dp"
+        android:text="@string/telefonos_ertesites"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/alarmSwitch"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/binSelector"
+        app:layout_constraintVertical_bias="0.209" />
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:timePickerMode="spinner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goToStatisticsButton"
+        app:layout_constraintVertical_bias="0.043" />
+
     <Button
-        android:id="@+id/setAlarmButton"
-        android:layout_width="191dp"
-        android:layout_height="74dp"
-        android:text="Riasztás hozzáadása"
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Változtatások mentése"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.729" />
+        app:layout_constraintTop_toBottomOf="@+id/binSelector"
+        app:layout_constraintVertical_bias="0.619" />
+
+    <Spinner
+        android:id="@+id/binSelector"
+        android:layout_width="365dp"
+        android:layout_height="51dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker"
+        app:layout_constraintVertical_bias="0.218" />
 
     <Button
         android:id="@+id/goBackToDirFromAlarmButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vissza"
+        android:text="@string/vissza"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <Button
-        android:id="@+id/turnOffAlarmButton"
-        android:layout_width="163dp"
-        android:layout_height="54dp"
-        android:text="Riasztás kikapcsolása"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.892" />
-
-    <RadioGroup
-        android:id="@+id/dayCycleRadioGroup"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.393">
-
-        <RadioButton
-            android:id="@+id/morningRadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Reggel"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:id="@+id/lunchRadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dél"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:id="@+id/dinnerRadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Este"
-            android:textSize="18sp" />
-
-    </RadioGroup>
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="217dp"
-        android:layout_height="51dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/radioGroup"
-        app:layout_constraintHorizontal_bias="0.126"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.34" />
-
-    <EditText
-        android:id="@+id/editTextTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintBottom_toTopOf="@+id/setAlarmButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.903" />
+        app:layout_constraintVertical_bias="0.043" />
 </androidx.constraintlayout.widget.ConstraintLayout>

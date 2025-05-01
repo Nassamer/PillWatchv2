@@ -9,4 +9,9 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="email">Email</string>
+    <string name="vissza">Vissza</string>
+    <string name="statisztikak_megtekintese">Statisztikák megtekintése</string>
+    <string name="telefonos_ertesites">Telefonos értesítés</string>
+    <string name="tarolo_riasztas">Tároló riasztás</string>
 </resources>
