@@ -31,7 +31,7 @@ public class PillWatch extends AppCompatActivity {
     Button goBackBtn;
 
     private ArrayList<Database> databases;
-    private RecyclerView recyclerView;
+    protected RecyclerView recyclerView;
     private DatabaseAdapter databaseAdapter;
     private ActivityPillWatchBinding binding;
 

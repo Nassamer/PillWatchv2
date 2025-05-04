@@ -85,9 +85,6 @@ public class StatisticsDbHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    /**
-     * Returns percentage change in "full" count from last week to this week.
-     */
     public float getFullChangePercentageWeekOverWeek() {
         int thisWeek = getFullCountForWeek(0);
         int lastWeek = getFullCountForWeek(-1);

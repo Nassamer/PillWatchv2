@@ -59,7 +59,7 @@ public class Registration extends AppCompatActivity {
                 if(firebaseUser != null){
 
                 }else{
-                    //User logged off
+
                 }
             }
         };
