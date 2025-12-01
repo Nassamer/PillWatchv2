@@ -5,6 +5,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="android.view.View" />
+
         <variable
             name="database"
             type="com.example.pillwatch.Database" />
@@ -12,103 +14,80 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_margin="16dp"
-        app:cardCornerRadius="10dp">
+        android:layout_margin="12dp"
+        app:cardElevation="6dp"
+        app:cardCornerRadius="16dp"
+        app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="178dp"
-            android:layout_marginLeft="16dp">
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/dayOfWeek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{database.dayOfWeek}"
-                android:textColor="@color/black"
+                android:visibility="@{database.period.equals(`Reggel`) ? View.VISIBLE : View.GONE}"
+                android:textColor="@android:color/black"
                 android:textSize="20sp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/period"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{database.period}"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintTop_toBottomOf="@id/dayOfWeek"
-                app:layout_constraintStart_toStartOf="@id/dayOfWeek"
-                android:layout_marginTop="4dp" />
-
-            <TextView
-                android:id="@+id/baseValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp"
                 android:layout_marginTop="4dp"
-                android:text='@{database.binState.equals("Full") ? "Teli" : "Üres"}'
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/period" />
+                app:layout_constraintStart_toStartOf="@id/dayOfWeek"
+                app:layout_constraintTop_toBottomOf="@id/dayOfWeek" />
 
-            <TextView
-                android:id="@+id/currentValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/timeIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@android:drawable/ic_lock_idle_alarm"
                 android:layout_marginTop="8dp"
-                android:text="@{Long.toString(database.currentValue)}"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/alarmState" />
-
-            <TextView
-                android:id="@+id/alarmState"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@{database.alarmState}"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.493"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/alarmTime" />
+                app:layout_constraintTop_toBottomOf="@id/period" />
 
             <TextView
                 android:id="@+id/alarmTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{database.alarmTime}"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@id/timeIcon"
+                app:layout_constraintStart_toEndOf="@id/timeIcon" />
+
+            <ImageView
+                android:id="@+id/binIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@android:drawable/ic_delete"
+                android:layout_marginTop="12dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/binState" />
+                app:layout_constraintTop_toBottomOf="@id/timeIcon"/>
 
             <TextView
                 android:id="@+id/binState"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{database.binState}"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/baseValue" />
-
-
-
+                android:text='@{database.binState.equals("Full") ? "Teli" : "Üres"}'
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@id/binIcon"
+                app:layout_constraintStart_toEndOf="@id/binIcon" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
